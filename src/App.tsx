@@ -5,9 +5,13 @@ import GenreList from "./components/GenreList";
 import type { Genre } from "./hooks/useGenres";
 import { useState } from "react";
 import PlatFormSelector from "./components/PlatFormSelector";
+import type { Platform } from "./hooks/useGames";
 
 const App = () => {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
   //to share state between 2 components, lift it to the nearest parent-> like if both components needed access to same state
   return (
     <Grid
@@ -23,6 +27,7 @@ const App = () => {
       <GridItem area="nav">
         <NavBar />
       </GridItem>
+
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
@@ -31,9 +36,17 @@ const App = () => {
           />
         </GridItem>
       </Show>
+
       <GridItem area="main">
-        <PlatFormSelector></PlatFormSelector>
-        <GameGrid selectedGenre={selectedGenre}></GameGrid>
+        <PlatFormSelector
+          selectedPlatform={selectedPlatform}
+          onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+        ></PlatFormSelector>
+
+        <GameGrid
+          selectedPlatform={selectedPlatform}
+          selectedGenre={selectedGenre}
+        ></GameGrid>
       </GridItem>
     </Grid>
   );
