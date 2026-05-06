@@ -1,5 +1,5 @@
 import { Fragment } from "react/jsx-runtime";
-import type { Platform } from "../hooks/useGames";
+import type { Platform } from "../hooks/usePlatforms";
 import { HStack, Icon } from "@chakra-ui/react";
 
 import {
@@ -34,7 +34,7 @@ const PlatformIconList = ({ platforms }: Props) => {
   return (
     <Fragment>
       <HStack marginY={"10px"}>
-        {platforms.map((platform) => (
+        {platforms?.map((platform) => (
           <Icon
             key={platform.id}
             color="gray.500"
