@@ -14,11 +14,12 @@ export interface GameQuery {
   platform: Platform | null;
   sortOrder: string;
   searchText: string;
+  // pageSize: number;
 }
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
+  // gameQuery.pageSize = 20;
   return (
     <Grid
       templateAreas={{

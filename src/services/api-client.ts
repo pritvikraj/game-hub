@@ -3,6 +3,7 @@ import axios from "axios";
 export interface FetchResponse<T> { //its here because we use this in tandem with apiClient almost always
   count: number;
   results: T[];
+  next: string | null;
 }
 
 export default axios.create({
