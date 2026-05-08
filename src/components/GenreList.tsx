@@ -5,6 +5,7 @@ import {
   Image,
   List,
   ListItem,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
@@ -17,6 +18,7 @@ interface Props {
 
 const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const { data, isLoading, error } = useGenres();
+  const textColor = useColorModeValue("gray.800", "gray.300");
 
   if (error) return null;
 
@@ -24,7 +26,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
 
   return (
     <>
-      <Heading fontSize={"2xl"} marginBottom={3}>
+      <Heading fontSize={"2xl"} marginBottom={3} color={textColor}>
         Genres
       </Heading>
       <List>
@@ -41,6 +43,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
+                color={textColor}
                 fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre.id)}
                 variant={"link"}

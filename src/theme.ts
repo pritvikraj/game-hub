@@ -6,7 +6,16 @@ const config: ThemeConfig = {
 }
 
 const theme = extendTheme({
-   config,
+  config,
+  styles: {
+    global: (props: { colorMode: string }) => ({
+      body: {
+        bg: props.colorMode === "light"
+          ? "linear-gradient(135deg, #f0eaff 0%, #e8f0ff 50%, #fce8ff 100%)"
+          : "gray.800",
+      }
+    })
+  },
   colors: {
     gray: {
       50: '#f9f9f9',
@@ -21,6 +30,6 @@ const theme = extendTheme({
       900: '#111'
     }
   }
- })
+}) 
 
 export default theme

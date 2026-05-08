@@ -19,7 +19,7 @@ const PlatFormSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         {selectedPlatform?.name || "Platforms"}
       </MenuButton>
-      <MenuList>
+      <MenuList maxH="250px" overflowY="auto">
         {data?.results.map((platform) => (
           <MenuItem
             onClick={() => onSelectPlatform(platform.id)}

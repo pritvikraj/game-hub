@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Spinner, Text, useColorModeValue } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Fragment } from "react/jsx-runtime";
 import type { GameQuery } from "../App";
@@ -14,6 +14,7 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading, fetchNextPage, hasNextPage } =
     useGames(gameQuery);
+  const spinnerColor = useColorModeValue("purple.400", "green.400");
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) return <Text>{error.message}</Text>;
@@ -28,7 +29,7 @@ const GameGrid = ({ gameQuery }: Props) => {
       hasMore={hasNextPage}
       loader={
         <Box display="flex" justifyContent="center" padding={10}>
-          <Spinner size="xl" color="green.400" thickness="3px" speed="0.7s" />
+          <Spinner size="xl" color={spinnerColor} thickness="3px" speed="0.7s" />
         </Box>
       }
     >

@@ -32,7 +32,7 @@ const Emoji = ({ rating }: Props) => {
   return (
     <HStack>
       {Array.from({ length: rating }).map((_, i) => (
-        <FaStar key={i} color="#cdcd4d" size={15}></FaStar>
+        <FaStar key={i} color="#ffab00" size={15}></FaStar>
       ))}
     </HStack>
   );
