@@ -11,6 +11,7 @@
 
 //Fetching platforms using reactquery
 
+import ms from "ms";
 import platforms from "../data/platforms";
 import apiClient from "../services/api-client";
 import type { FetchResponse } from "../services/api-client";
@@ -29,8 +30,8 @@ const usePlatforms = () => {
           apiClient
             .get<FetchResponse<Platform>>('/platforms')
             .then(res => res.data),
-      staleTime: 24 * 60 * 60 * 1000, //24h
-    //   initialData: {count: platforms.length, results: platforms, next: null} //shape of fetchresponse obj
+    //   staleTime: 24 * 60 * 60 * 1000, //24h
+    staleTime: ms('24h'),
     initialData: platforms,
     })
 }
