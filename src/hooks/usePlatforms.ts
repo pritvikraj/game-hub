@@ -30,7 +30,8 @@ const usePlatforms = () => {
             .get<FetchResponse<Platform>>('/platforms')
             .then(res => res.data),
       staleTime: 24 * 60 * 60 * 1000, //24h
-      initialData: {count: platforms.length, results: platforms, next: null} //shape of fetchresponse obj
+    //   initialData: {count: platforms.length, results: platforms, next: null} //shape of fetchresponse obj
+    initialData: platforms,
     })
 }
 
