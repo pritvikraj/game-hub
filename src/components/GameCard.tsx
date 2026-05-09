@@ -18,11 +18,23 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   const cardBg = useColorModeValue("#f7f0ff", "gray.700");
+  const cardShadow = useColorModeValue(
+    "0 4px 20px rgba(139, 92, 246, 0.2)",
+    "none",
+  );
 
   return (
-    <Card bg={cardBg}>
+    <Card
+      bg={cardBg}
+      boxShadow={cardShadow}
+      overflow="hidden"
+      height="100%"
+      display="flex"
+      flexDirection="column"
+    >
+      {/* overflow only works  */}
       <Image src={getCroppedImageUrl(game.background_image)}></Image>
-      <CardBody>
+      <CardBody flex="1">
         <HStack justifyContent={"space-between"} marginBottom={3}>
           <PlatformIconList
             platforms={game.parent_platforms?.map((p) => p.platform)}
