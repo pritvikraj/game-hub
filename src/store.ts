@@ -1,3 +1,5 @@
+//remember, dont use zustand sometimes if you want a more reusable component
+
 import {create} from "zustand";
 
 export interface GameQuery {
