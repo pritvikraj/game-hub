@@ -8,7 +8,7 @@ const NavBar = () => {
   const resetQuery = useGameQueryStore((s) => s.resetQuery);
 
   return (
-    <HStack padding="10px">
+    <HStack padding="10px" as="nav">
       <Image
         src={logo}
         boxSize="60px"
