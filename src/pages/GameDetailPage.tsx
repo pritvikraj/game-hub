@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import ExpandableText from "../components/ExpandableText";
 import useGame from "../hooks/useGame";
 import GameAttributes from "../components/GameAttributes";
+import GameTrailer from "../components/GameTrailer";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -25,6 +26,7 @@ const GameDetailPage = () => {
         {game.description.replace(/<[^>]+>/g, "")}
       </ExpandableText>
       <GameAttributes game={game} />
+      <GameTrailer slug={slug!} />
     </Box>
   );
 };
