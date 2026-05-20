@@ -1,7 +1,8 @@
 import { Box, Heading, Spinner, useColorModeValue } from "@chakra-ui/react";
 import { useParams } from "react-router";
-import useGame from "../hooks/useGame";
 import ExpandableText from "../components/ExpandableText";
+import useGame from "../hooks/useGame";
+import GameAttributes from "../components/GameAttributes";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -18,14 +19,13 @@ const GameDetailPage = () => {
   if (error || !game) throw error;
 
   return (
-    <>
-      <Box as="main" padding={2}>
-        <Heading marginBottom={2}>{game.name}</Heading>
-        <ExpandableText>
-          {game.description.replace(/<[^>]+>/g, "")}
-        </ExpandableText>
-      </Box>
-    </>
+    <Box as="main" padding={2}>
+      <Heading marginBottom={2}>{game.name}</Heading>
+      <ExpandableText>
+        {game.description.replace(/<[^>]+>/g, "")}
+      </ExpandableText>
+      <GameAttributes game={game} />
+    </Box>
   );
 };
 

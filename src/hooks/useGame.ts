@@ -1,10 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
-
-interface GameDetail {
-    description: string;
-    name: string;
-}
+import type { GameDetail } from "../entities/GameDetail";
 
 const gamesClient = new APIClient<GameDetail>('/games');  // outside hook so its created once
 

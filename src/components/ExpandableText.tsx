@@ -7,8 +7,8 @@ interface Props {
 
 const ExpandableText = ({ children }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const btnBg = useColorModeValue("purple.600", "green.600");
-  const btnHoverBg = useColorModeValue("purple.700", "green.700");
+  const btnBg = useColorModeValue("#c084fc", "green.700");
+  const btnHoverBg = useColorModeValue("#a855f7", "green.800");
   const limit = 300;
 
   if (!children) return null;
@@ -27,6 +27,7 @@ const ExpandableText = ({ children }: Props) => {
         px={2}
         py={1}
         bg={btnBg}
+        color="white"
         _hover={{ bg: btnHoverBg }}
         onClick={() => setIsExpanded(!isExpanded)}
       >
