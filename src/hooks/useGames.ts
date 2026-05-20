@@ -3,17 +3,7 @@ import ms from "ms";
 import type { FetchResponse } from "../services/api-client";
 import APIClient from "../services/api-client";
 import useGameQueryStore from "../store";
-import type { Platform } from "./usePlatforms";
-
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: [{platform: Platform}];
-  metacritic: number;
-  rating_top: number;
-  slug: string;
-}
+import type { Game } from "../entities/Game";
 
 const gamesClient = new APIClient<Game>('/games');  // outside hook so its created once
 
