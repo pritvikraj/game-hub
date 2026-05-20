@@ -4,6 +4,7 @@ import {
   Heading,
   HStack,
   Image,
+  Link,
   useColorModeValue,
 } from "@chakra-ui/react";
 import type { Game } from "../hooks/useGames";
@@ -11,6 +12,7 @@ import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import Emoji from "./Emoji";
+import { Link as RouterLink } from "react-router";
 
 interface Props {
   game: Game;
@@ -22,6 +24,7 @@ const GameCard = ({ game }: Props) => {
     "0 4px 20px rgba(139, 92, 246, 0.2)",
     "none",
   );
+  const linkHover = useColorModeValue("purple.500", "purple.300");
 
   return (
     <Card
@@ -32,7 +35,6 @@ const GameCard = ({ game }: Props) => {
       display="flex"
       flexDirection="column"
     >
-      {/* overflow only works  */}
       <Image src={getCroppedImageUrl(game.background_image)}></Image>
       <CardBody flex="1">
         <HStack justifyContent={"space-between"} marginBottom={3}>
@@ -42,7 +44,16 @@ const GameCard = ({ game }: Props) => {
           <CriticScore score={game.metacritic} />
         </HStack>
         <HStack justifyContent={"space-between"} alignItems={"flex-end"}>
-          <Heading fontSize={"2xl"}>{game.name}</Heading>
+          <Heading fontSize={"2xl"}>
+            <Link
+              as={RouterLink}
+              to={"/games/" + game.slug}
+              _hover={{ color: linkHover }}
+              transition="color 0.2s ease"
+            >
+              {game.name}
+            </Link>
+          </Heading>
           <Emoji rating={game.rating_top} />
         </HStack>
       </CardBody>

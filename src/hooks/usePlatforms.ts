@@ -11,11 +11,10 @@
 
 //Fetching platforms using reactquery
 
+import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import platforms from "../data/platforms";
-import apiClient from "../services/api-client";
-import type { FetchResponse } from "../services/api-client";
-import { useQuery } from "@tanstack/react-query";
+import APIClient from "../services/api-client";
 
 export interface Platform {
     id: number;
@@ -23,13 +22,13 @@ export interface Platform {
     slug: string
 }
 
+const platformsClient = new APIClient<Platform>('/platforms');
+
 const usePlatforms = () => {
     return useQuery({
       queryKey: ['platforms'],
       queryFn: () => 
-          apiClient
-            .get<FetchResponse<Platform>>('/platforms')
-            .then(res => res.data),
+          platformsClient.getAll(),
     //   staleTime: 24 * 60 * 60 * 1000, //24h
     staleTime: ms('24h'),
     initialData: platforms,
