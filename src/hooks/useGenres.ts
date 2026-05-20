@@ -33,13 +33,13 @@ import genres from "../data/genres";
 import APIClient from "../services/api-client";
 import type { Genre } from "../entities/Genre";
 
-const genresClient = new APIClient<Genre>('genres')
+const genreClient = new APIClient<Genre>('genres')
 
 const useGenres = () => {
     return useQuery({
       queryKey: ['genres'],
       queryFn: () => 
-          genresClient
+          genreClient
             .getAll(),
             
       // staleTime: 24 * 60 * 60 * 1000, //24h

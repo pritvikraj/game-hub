@@ -5,7 +5,7 @@ import APIClient from "../services/api-client";
 import useGameQueryStore from "../store";
 import type { Game } from "../entities/Game";
 
-const gamesClient = new APIClient<Game>('/games');  // outside hook so its created once
+const gameClient = new APIClient<Game>('/games');  // outside hook so its created once
 
 const useGames = () => {
   const gameQuery = useGameQueryStore(s => s.gameQuery)
@@ -13,7 +13,7 @@ const useGames = () => {
   return useInfiniteQuery<FetchResponse<Game>>({
    queryKey: ['games', gameQuery],
    queryFn: ({ pageParam }) =>
-     gamesClient
+     gameClient
        .getAll( {
          params: {
            genres: gameQuery.genreId,

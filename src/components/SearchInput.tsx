@@ -1,12 +1,17 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import useGameQueryStore from "../store";
 import { useNavigate } from "react-router";
 
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
-  const setSearchText = useGameQueryStore((s) => s.setSearchText); //with this setter, our component is only dependent on this.
+  const setSearchText = useGameQueryStore((s) => s.setSearchText);
+  const searchText = useGameQueryStore((s) => s.gameQuery.searchText);
+
+  useEffect(() => {
+    if (!searchText && ref.current) ref.current.value = "";
+  }, [searchText]);
   const navigate = useNavigate();
 
   return (

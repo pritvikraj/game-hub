@@ -24,7 +24,7 @@ const GameCard = ({ game }: Props) => {
     "0 4px 20px rgba(139, 92, 246, 0.2)",
     "none",
   );
-  const linkHover = useColorModeValue("purple.500", "purple.300");
+  const linkHover = useColorModeValue("purple.500", "green.500");
 
   return (
     <Card
