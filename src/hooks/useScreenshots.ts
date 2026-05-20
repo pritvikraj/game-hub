@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import APIClient, { type FetchResponse } from "../services/api-client"
-import type { Screenshot } from "../entities/Screenshot";
+import type Screenshot from "../entities/Screenshot";
 
 const screenshotClient = new APIClient<FetchResponse<Screenshot>>('/games')
 
