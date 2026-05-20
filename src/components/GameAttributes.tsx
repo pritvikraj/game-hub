@@ -11,7 +11,11 @@ const GameAttributes = ({ game }: Props) => {
   return (
     <SimpleGrid columns={2} as="dl">
       <DefinitionItem term="Platforms">
-        <Text>{game.parent_platforms?.map(({ platform }) => platform.name).join(", ")}</Text>
+        <Text>
+          {game.parent_platforms
+            ?.map(({ platform }) => platform.name)
+            .join(", ")}
+        </Text>
       </DefinitionItem>
 
       <DefinitionItem term="Metascore">
