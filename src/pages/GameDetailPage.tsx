@@ -1,4 +1,11 @@
-import { Box, Heading, Spinner, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  GridItem,
+  Heading,
+  SimpleGrid,
+  Spinner,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useParams } from "react-router";
 import ExpandableText from "../components/ExpandableText";
 import useGame from "../hooks/useGame";
@@ -21,15 +28,20 @@ const GameDetailPage = () => {
   if (error || !game) throw error;
 
   return (
-    <Box as="main" padding={2}>
-      <Heading marginBottom={2}>{game.name}</Heading>
-      <ExpandableText>
-        {game.description.replace(/<[^>]+>/g, "").replace(/&#\d+;/g, "")}
-      </ExpandableText>
-      <GameAttributes game={game} />
-      <GameTrailer slug={slug!} />
-      <GameScreenshots gameId={game.id} />
-    </Box>
+    <SimpleGrid as="main" padding={2} columns={{ base: 1, md: 2 }}>
+      <GridItem>
+        <Heading marginBottom={2}>{game.name}</Heading>
+        <ExpandableText>
+          {game.description.replace(/<[^>]+>/g, "").replace(/&#\d+;/g, "")}
+        </ExpandableText>
+        <GameAttributes game={game} />
+      </GridItem>
+
+      <GridItem>
+        <GameTrailer slug={slug!} />
+        <GameScreenshots gameId={game.id} />
+      </GridItem>
+    </SimpleGrid>
   );
 };
 
