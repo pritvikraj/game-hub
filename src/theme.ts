@@ -7,6 +7,9 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   config,
+  fonts: {
+    heading: `'Bebas Neue', sans-serif`,
+  },
   styles: {
     global: (props: { colorMode: string }) => ({
       body: {

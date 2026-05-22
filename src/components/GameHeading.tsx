@@ -15,7 +15,11 @@ const GameHeading = () => {
   } Games`;
 
   return (
-    <Heading marginY={5} fontSize={"5xl"} as="h1">
+    <Heading
+      marginY={{ base: 3, md: 5 }}
+      fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+      as="h1"
+    >
       {heading}
     </Heading>
   );
