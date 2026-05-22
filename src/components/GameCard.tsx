@@ -24,7 +24,11 @@ const GameCard = ({ game }: Props) => {
     "0 4px 20px rgba(139, 92, 246, 0.2)",
     "none",
   );
-  const linkHover = useColorModeValue("purple.500", "green.500");
+  const linkHover = useColorModeValue("purple.500", "green.400");
+  const linkGlow = useColorModeValue(
+    "0 0 10px rgba(139, 92, 246, 0.7)",
+    "0 0 10px rgba(72, 255, 128, 0.7)"
+  );
 
   return (
     <Card
@@ -48,8 +52,8 @@ const GameCard = ({ game }: Props) => {
             <Link
               as={RouterLink}
               to={"/games/" + game.slug}
-              _hover={{ color: linkHover }}
-              transition="color 0.2s ease"
+              _hover={{ color: linkHover, textShadow: linkGlow }}
+              transition="color 0.2s ease, text-shadow 0.2s ease"
             >
               {game.name}
             </Link>
