@@ -72,8 +72,8 @@ const HomePage = () => {
           <Box paddingX={3}>
             <GameHeading />
             <HStack spacing={3} marginBottom={5}>
-              <Box flex={{ base: 1, md: "none" }}><PlatformSelector /></Box>
-              <Box flex={{ base: 1, md: "none" }}><SortSelector /></Box>
+              <Box flex={{ base: 1, md: "none" }} minW={0}><PlatformSelector /></Box>
+              <Box flex={{ base: 1, md: "none" }} minW={0}><SortSelector /></Box>
             </HStack>
           </Box>
 
