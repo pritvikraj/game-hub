@@ -14,7 +14,7 @@ const PlatformSelector = () => {
   if (error) return null;
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />} width="100%">
+      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         {selectedPlatform?.name || "Platforms"}
       </MenuButton>
       <MenuList maxH="250px" overflowY="auto">
