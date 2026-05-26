@@ -9,6 +9,7 @@ import {
   HStack,
   IconButton,
   Show,
+  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
@@ -20,6 +21,8 @@ import SortSelector from "../components/SortSelector";
 
 const HomePage = () => {
   const { isOpen, onToggle, onClose } = useDisclosure();
+  const btnBg = useColorModeValue("purple.800", "green.800");
+  const btnHoverBg = useColorModeValue("purple.900", "green.900");
 
   return (
     <>
@@ -36,9 +39,14 @@ const HomePage = () => {
           aria-label="Toggle genres"
           icon={isOpen ? <BsChevronLeft /> : <BsChevronRight />}
           onClick={onToggle}
-          size="sm"
+          size="xs"
+          h="28px"
+          w="18px"
+          minW="unset"
           borderLeftRadius={0}
-          opacity={isOpen ? 1 : 0.25}
+          bg={btnBg}
+          _hover={{ bg: btnHoverBg }}
+          opacity={isOpen ? 1 : 0.75}
           transition="opacity 0.2s"
         />
       </Box>
@@ -72,8 +80,12 @@ const HomePage = () => {
           <Box paddingX={3}>
             <GameHeading />
             <HStack spacing={3} marginBottom={5}>
-              <Box flex={{ base: 1, md: "none" }} minW={0}><PlatformSelector /></Box>
-              <Box flex={{ base: 1, md: "none" }} minW={0}><SortSelector /></Box>
+              <Box flex={{ base: 1, md: "none" }} minW={0}>
+                <PlatformSelector />
+              </Box>
+              <Box flex={{ base: 1, md: "none" }} minW={0}>
+                <SortSelector />
+              </Box>
             </HStack>
           </Box>
 
